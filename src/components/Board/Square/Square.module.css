@@ -1,0 +1,14 @@
+.Square {
+    margin: 0 auto;
+    overflow:hidden;
+    width: 30px; height: 30px;
+}
+
+.Dark {
+    background-color: black;
+
+}
+
+.Light {
+    background-color: white;
+}
