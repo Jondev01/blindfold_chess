@@ -7,7 +7,7 @@ export class Queen {
 
     getDir = () => {
         //return random direction in which piece could move
-        const testDir = () => [Math.floor(Math.random(3)) - 1, Math.floor(Math.random(3)) - 1];
+        const testDir = () => [Math.floor(3*Math.random()) - 1, Math.floor(3*Math.random()) - 1];
         let dir = testDir();
         while(!this.stepIsLegal(dir))
             dir = testDir();
@@ -36,7 +36,7 @@ export class Rook {
     getDir = () => {
         const testDir = () => {
             //return random direction
-            let rand = Math.floor(Math.random(4));
+            let rand = Math.floor(4*Math.random());
             switch(rand) {
                 case 0 : return [0,1]; 
                 case 1 : return [1,0];
@@ -73,7 +73,7 @@ export class Bishop {
 
     getDir = () => {
         //return random direction
-        const testDir = () => [2*Math.floor(Math.random(2)) - 1, 2*Math.floor(Math.random(2)) - 1];
+        const testDir = () => [2*Math.floor(2*Math.random()) - 1, 2*Math.floor(2*Math.random()) - 1];
         let dir = testDir();
         while(!this.stepIsLegal(dir))
             dir = testDir();
@@ -102,7 +102,7 @@ export class Knight {
     getDir = () => {
         //return random direction
         const testDir = () => {
-            let rand = Math.floor(Math.random(8));
+            let rand = Math.floor(8*Math.random());
             switch(rand) {
                 case 0 : return [1,2]; 
                 case 1 : return [2,1];
@@ -117,6 +117,7 @@ export class Knight {
         let dir = testDir();
         while(!this.stepIsLegal(dir))
             dir = testDir();
+        return dir;
     };
 
     setSquare = (newSquare) => {
