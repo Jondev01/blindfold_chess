@@ -14,6 +14,14 @@ export class Queen {
         return dir;
     };
 
+    getDirs = () => {
+        const dirs = [];
+        for(let i=-1; i<=1; i++) 
+            for(let j=-1; j<=1; j++)
+                dirs.push([i,j]);
+        return dirs;
+    };
+
     setSquare = (newSquare) => {
         this.square = newSquare;
     };

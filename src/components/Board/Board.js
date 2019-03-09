@@ -81,6 +81,22 @@ class Board extends Component {
         return [piece, dir];
     }
 
+    attackedPieces = (piece) => {
+        //find all the pieces attacked by piece
+        return piece.getDirs().reduce( (attackedPieces, dir) => {
+            let position = piece.square;
+            while( piece.stepIsLegal(dir, position)) {
+                position += dir[0] + 8*dir[1];
+                //if square is not empty, add it to list
+                if(this.state.board[position] !== 0)
+                    attackedPieces.push(piece.name);
+                //knights only make one step
+                if(piece.name === 'N')
+                    break;
+            }
+        }, []);
+    }
+
 
     render() {
         let squares = this.state.board.map( (el, index) => {
