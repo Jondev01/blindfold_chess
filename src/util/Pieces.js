@@ -1,8 +1,8 @@
-class Queen {
+export class Queen {
 
     constructor(square) {
         this.square = square;
-        this.name = 'queen';
+        this.name = 'Q';
     }
 
     getDir = () => {
@@ -16,11 +16,11 @@ class Queen {
 
 }
 
-class Rook {
+export class Rook {
 
     constructor(square) {
         this.square = square;
-        this.name = 'rook';
+        this.name = 'R';
     }
 
     getDir = () => {
@@ -40,11 +40,11 @@ class Rook {
 
 }
 
-class Bishop {
+export class Bishop {
 
     constructor(square) {
         this.square = square;
-        this.name = 'bishop';
+        this.name = 'B';
     }
 
     getDir = () => {
@@ -58,11 +58,11 @@ class Bishop {
 
 }
 
-class Knight {
+export class Knight {
 
     constructor(square) {
         this.square = square;
-        this.name = 'knight';
+        this.name = 'N';
     }
 
     getDir = () => {
@@ -83,5 +83,4 @@ class Knight {
     move = (newSquare) => {
         this.square = newSquare;
     };
-
 }

@@ -1,7 +1,14 @@
 .Square {
-    margin: 0 auto;
-    overflow:hidden;
-    width: 30px; height: 30px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: white;
+    width: 12.5%; 
+    height: 12.5%;
+    font-size: 12px;
+    line-height: 200%;
+    /*vertical-align: middle;*/
 }
 
 .Dark {
@@ -10,5 +17,5 @@
 }
 
 .Light {
-    background-color: white;
+    background-color: rgb(245, 202, 210);
 }
