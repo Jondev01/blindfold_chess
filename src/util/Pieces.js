@@ -6,13 +6,23 @@ export class Queen {
     }
 
     getDir = () => {
-        //return random direction
-        return [Math.floor(Math.random(3)) - 1, Math.floor(Math.random(3)) - 1];
+        //return random direction in which piece could move
+        const testDir = () => [Math.floor(Math.random(3)) - 1, Math.floor(Math.random(3)) - 1];
+        let dir = testDir();
+        while(!this.stepIsLegal(dir))
+            dir = testDir();
+        return dir;
     };
 
-    move = (newSquare) => {
+    setSquare = (newSquare) => {
         this.square = newSquare;
     };
+
+    stepIsLegal = (dir, square) => {
+        if(!square && square !== 0)
+            square = this.square
+        return  !(square%8+dir[0] >=8 || square%8+dir[0] < 0 || square/8 + dir[1] < 0 || square/8 + dir[1] >=8);
+    }
 
 }
 
@@ -24,19 +34,33 @@ export class Rook {
     }
 
     getDir = () => {
-        //return random direction
-        let dir = Math.floor(Math.random(4));
-        switch(dir) {
-            case 0 : return [0,1]; 
-            case 1 : return [1,0];
-            case 2 : return [0,-1];
-            case 3 : return [-1, 0]; 
-        };
+        const testDir = () => {
+            //return random direction
+            let rand = Math.floor(Math.random(4));
+            switch(rand) {
+                case 0 : return [0,1]; 
+                case 1 : return [1,0];
+                case 2 : return [0,-1];
+                case 3 : return [-1, 0]; 
+            };
+        }
+        let dir = testDir();
+        while( !this.stepIsLegal(dir) ) {
+            //not on board, try again
+            dir = testDir();
+        }
+        return dir;
     };
 
-    move = (newSquare) => {
+    setSquare = (newSquare) => {
         this.square = newSquare;
     };
+
+    stepIsLegal = (dir, square) => {
+        if(!square && square !== 0)
+            square = this.square
+        return  !(square%8+dir[0] >=8 || square%8+dir[0] < 0 || square/8 + dir[1] < 0 || square/8 + dir[1] >=8);
+    }
 
 }
 
@@ -49,12 +73,22 @@ export class Bishop {
 
     getDir = () => {
         //return random direction
-        return [2*Math.floor(Math.random(2)) - 1, 2*Math.floor(Math.random(2)) - 1];
+        const testDir = () => [2*Math.floor(Math.random(2)) - 1, 2*Math.floor(Math.random(2)) - 1];
+        let dir = testDir();
+        while(!this.stepIsLegal(dir))
+            dir = testDir();
+        return dir;
     };
 
-    move = (newSquare) => {
+    setSquare = (newSquare) => {
         this.square = newSquare;
     };
+
+    stepIsLegal = (dir, square) => {
+        if(!square && square !== 0)
+            square = this.square
+        return  !(square%8+dir[0] >=8 || square%8+dir[0] < 0 || square/8 + dir[1] < 0 || square/8 + dir[1] >=8);
+    }
 
 }
 
@@ -67,20 +101,31 @@ export class Knight {
 
     getDir = () => {
         //return random direction
-        let dir = Math.floor(Math.random(8));
-        switch(dir) {
-            case 0 : return [1,2]; 
-            case 1 : return [2,1];
-            case 2 : return [-1,2];
-            case 3 : return [-2, 1];
-            case 4 : return [1, -2];
-            case 5 : return [2, -1];
-            case 6 : return [-2, -1];
-            case 7 : return [-1, -2];
+        const testDir = () => {
+            let rand = Math.floor(Math.random(8));
+            switch(rand) {
+                case 0 : return [1,2]; 
+                case 1 : return [2,1];
+                case 2 : return [-1,2];
+                case 3 : return [-2, 1];
+                case 4 : return [1, -2];
+                case 5 : return [2, -1];
+                case 6 : return [-2, -1];
+                case 7 : return [-1, -2];
+            };
         };
+        let dir = testDir();
+        while(!this.stepIsLegal(dir))
+            dir = testDir();
     };
 
-    move = (newSquare) => {
+    setSquare = (newSquare) => {
         this.square = newSquare;
     };
+
+    stepIsLegal = (dir, square) => {
+        if(!square && square !== 0)
+            square = this.square
+        return  !(square%8+dir[0] >=8 || square%8+dir[0] < 0 || square/8 + dir[1] < 0 || square/8 + dir[1] >=8);
+    }
 }
