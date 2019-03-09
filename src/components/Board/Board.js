@@ -17,17 +17,15 @@ class Board extends Component {
         //initialize positions
         let rPos = Math.floor(64*Math.random());
         let bPos = Math.floor(64*Math.random());
-        console.log('setting bPos', rPos, bPos);
-        //while(bPos === rPos)
-          //  bPos = Math.floor(64*Math.random());
+        while(bPos === rPos)
+            bPos = Math.floor(64*Math.random());
         let qPos = Math.floor(64*Math.random());
-        console.log('setting qPos');
-        //while(qPos === bPos || qPos === rPos)
-          //  qPos = Math.floor(64*Math.random());
+        while(qPos === bPos || qPos === rPos)
+            qPos = Math.floor(64*Math.random());
         let nPos = Math.floor(64*Math.random());
-        console.log('setting nPos');
-        //while(nPos === bPos || nPos === rPos || bPos === qPos)
-          //  nPos = Math.floor(64*Math.random());
+        while(nPos === bPos || nPos === rPos || bPos === qPos)
+            nPos = Math.floor(64*Math.random());
+        //create board
         const board = Array(64).fill(0);
         board[rPos] = new Pieces.Rook(rPos);
         board[bPos] = new Pieces.Bishop(bPos);
