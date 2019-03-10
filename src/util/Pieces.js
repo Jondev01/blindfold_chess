@@ -60,6 +60,15 @@ export class Rook {
         return dir;
     };
 
+    getDirs = () => {
+        return [
+            [1,0],
+            [0,1],
+            [-1,0],
+            [0,-1]
+        ];
+    }
+
     setSquare = (newSquare) => {
         this.square = newSquare;
     };
@@ -87,6 +96,15 @@ export class Bishop {
             dir = testDir();
         return dir;
     };
+
+    getDirs = () => {
+        return [
+            [1,1],
+            [-1,1],
+            [-1,-1],
+            [1,-1]
+        ];
+    }
 
     setSquare = (newSquare) => {
         this.square = newSquare;
@@ -127,6 +145,19 @@ export class Knight {
             dir = testDir();
         return dir;
     };
+
+    getDirs = () => {
+        return [
+            [1,2],
+            [2,1],
+            [-1,2],
+            [-2,1],
+            [1,-2],
+            [2,-1],
+            [-2,-1],
+            [-1,-2]
+        ];
+    }
 
     setSquare = (newSquare) => {
         this.square = newSquare;

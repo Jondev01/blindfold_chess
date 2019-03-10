@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-
-import Square from './Square/Square';
+import styles from './BoardContainer.module.css';
+import Board from '../Board/Board';
 import * as Pieces from '../../util/Pieces';
-import styles from './Board.module.css';
 
-class Board extends Component {
-   
-    /*constructor(props) {
+class BoardContainer extends Component {
+
+    constructor(props) {
         super(props);
         const initState = this.getInitialPos();
         this.state = {
             board : [...initState.board],
             pieces: {...initState.pieces},
-            attackedPieces: [...initState.attackedPieces],
+            attackedPieces: {...initState.attackedPieces},
         }
     }
     
@@ -41,7 +40,7 @@ class Board extends Component {
             Q: board[qPos],
             B: board[bPos]
         };
-        const attacked = getAttackedPieces({board: board, pieces: pieces});
+        const attacked = this.getAttackedPieces({board: board, pieces: pieces});
        return {board: board, pieces: pieces, attackedPieces: attacked};
     };
 
@@ -85,46 +84,44 @@ class Board extends Component {
         return [piece, dir];
     }
 
-    attackedPieces = (piece) => {
+    attackedPieces = (piece, board) => {
+        if(!board)
+            board = this.state.board;
         //find all the pieces attacked by piece
-        return piece.getDirs().reduce( (attackedPieces, dir) => {
+        return piece.getDirs().reduce( (attacked, dir) => {
             let position = piece.square;
+            
             while( piece.stepIsLegal(dir, position)) {
                 position += dir[0] + 8*dir[1];
-                //if square is not empty, add it to list
-                if(this.state.board[position] !== 0)
-                    attackedPieces.push(piece.name);
+                //if square is not empty, add it to list and move on to next dir
+                if(board[position] !== 0){
+                    attacked.push(piece.name);
+                    break;
+                }
                 //knights only make one step
                 if(piece.name === 'N')
                     break;
             }
+            return attacked;
         }, []);
     }
 
     getAttackedPieces = (state) => {
         const attacked = {};
         for(let pieceName in state.pieces) {
-            attacked[pieceName] = attackedPieces(state.pieces[pieceName]);
+            attacked[pieceName] = this.attackedPieces(state.pieces[pieceName], state.board);
         }
         return attacked;
-    }*/
+    }
 
     render() {
-        console.log(this.props);
-        let squares;
-        if(this.props.board){
-            squares = this.props.board.map( (el, index) => {
-            let color = (Math.floor(index/8) + index%8) %2 === 0 ? 'light' : 'dark';
-            return <Square type={color} key={index}  piece={el.name}/>
-        });
-    }
         return (
-            <div className={styles.Board}>
-                {squares}
+            <div className={styles.BoardContainer}>
+                <button onClick={this.generateMove}>Move</button>
+                <Board board={this.state.board} pieces={this.state.pieces}/>
             </div>
         );
     }
 }
 
-export default Board;
-
+export default BoardContainer;

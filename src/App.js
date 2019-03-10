@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Board from './components/Board/Board';
+import BoardContainer from './components/BoardContainer/BoardContainer';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Board />
+        <BoardContainer />
       </div>
     );
   }
