@@ -95,7 +95,7 @@ class BoardContainer extends Component {
                 position += dir[0] + 8*dir[1];
                 //if square is not empty, add it to list and move on to next dir
                 if(board[position] !== 0){
-                    attacked.push(piece.name);
+                    attacked.push(board[position].name);
                     break;
                 }
                 //knights only make one step
@@ -119,6 +119,12 @@ class BoardContainer extends Component {
             <div className={styles.BoardContainer}>
                 <button onClick={this.generateMove}>Move</button>
                 <Board board={this.state.board} pieces={this.state.pieces}/>
+                <div>
+                    Queen attacks: {this.state.attackedPieces['Q']} <br />
+                    Rook attacks: {this.state.attackedPieces['R']} <br />
+                    Bishop attacks: {this.state.attackedPieces['B']} <br />
+                    Knight attacks: {this.state.attackedPieces['N']}
+                </div>
             </div>
         );
     }

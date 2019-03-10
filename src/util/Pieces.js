@@ -16,9 +16,12 @@ export class Queen {
 
     getDirs = () => {
         const dirs = [];
-        for(let i=-1; i<=1; i++) 
-            for(let j=-1; j<=1; j++)
-                dirs.push([i,j]);
+        for(let i=-1; i<=1; i++) {
+            for(let j=-1; j<=1; j++){
+                if(!(i===0 && j===0))
+                    dirs.push([i,j]);
+            }
+        }
         return dirs;
     };
 
