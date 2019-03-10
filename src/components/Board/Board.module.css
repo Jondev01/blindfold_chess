@@ -7,30 +7,3 @@
 	font-size: 0;
 }
 
-table {
-	margin: 0 auto;
-	border-collapse: collapse;
-	background: #F0E68C; 
-	text-align:center;
-	overflow:hidden
-}
-table#chessTable {
-	visibility:hidden;
-}
-td {
-	overflow:hidden;
-    width: 30px; height: 30px;
-	vertical-align:middle;
-}
-
-tr:nth-child(odd) td:nth-child(even), tr:nth-child(even) td:nth-child(odd) {
-	background: black;
-}
-
-img {
-	vertical-align:middle;
-	height:25px;
-}
-img#boardIcon{
-	margin-left:0.5rem;
-}

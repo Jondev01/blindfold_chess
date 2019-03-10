@@ -5,14 +5,14 @@ import Knight from '../../../images/WN.png';
 import Queen from '../../../images/WQ.png';
 import Bishop from '../../../images/WB.png';
 
-const pieceImage = {
-    R: Rook,
-    N: Knight,
-    B: Bishop,
-    Q: Queen
-}
-
 const square = (props) => {
+
+    const pieceImage = {
+        R: Rook,
+        N: Knight,
+        B: Bishop,
+        Q: Queen
+    };
     const classes = [styles.Square];
     if (props.type === 'dark') 
         classes.push(styles.Dark);
@@ -20,7 +20,7 @@ const square = (props) => {
         classes.push(styles.Light);
     return (
         <div className={classes.join(' ')}>
-            {props.piece ? <img src={pieceImage[props.piece]} />  :  ''}
+            {props.piece ? <img src={pieceImage[props.piece]} alt=''/>  :  ''}
         </div>
     );
 };

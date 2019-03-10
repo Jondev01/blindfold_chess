@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './BoardContainer.module.css';
 import Board from '../Board/Board';
+import InputElements from '../InputElements/InputElements';
 import * as Pieces from '../../util/Pieces';
 
 class BoardContainer extends Component {
@@ -125,6 +126,7 @@ class BoardContainer extends Component {
                     Bishop attacks: {this.state.attackedPieces['B']} <br />
                     Knight attacks: {this.state.attackedPieces['N']}
                 </div>
+                <InputElements attackedPieces={this.state.attackedPieces}/>
             </div>
         );
     }

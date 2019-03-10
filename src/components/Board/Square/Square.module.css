@@ -12,15 +12,17 @@
 }
 
 .Dark {
-    background-color: black;
+    background: linear-gradient(45deg, rgb(70, 52, 3), rgb(59, 47, 8));
 
 }
 
 .Light {
-    background-color: #fff0f0;
+    background-color: rgb(236, 159, 59);
+    background: linear-gradient(-45deg, rgb(236, 172, 52), rgb(236, 178, 70));
 }
 
 .Square img {
     height: 80%;
     width: auto;
+    vertical-align: middle
 }
