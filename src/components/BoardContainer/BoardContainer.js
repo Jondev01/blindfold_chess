@@ -10,9 +10,10 @@ class BoardContainer extends Component {
         super(props);
         const initState = this.getInitialState();
         this.state = {
-            board : [...initState.board],
+            /*board : [...initState.board],
             pieces: {...initState.pieces},
-            attackedPieces: {...initState.attackedPieces},
+            attackedPieces: {...initState.attackedPieces},*/
+            ...initState
         }
     }
     
@@ -42,7 +43,7 @@ class BoardContainer extends Component {
             B: board[bPos]
         };
         const attacked = this.getAttackedPieces({board: board, pieces: pieces});
-       return {board: board, pieces: pieces, attackedPieces: attacked};
+       return {board: board, pieces: pieces, attackedPieces: attacked, counter: 0};
     };
 
     generateMove = () => {
@@ -67,7 +68,8 @@ class BoardContainer extends Component {
         board[initialPos] = 0;
         board[piece.square] = piece;
         const attacked = this.getAttackedPieces({board: board, pieces: pieces});
-        this.setState({board: board, pieces: pieces, attackedPieces: attacked});
+        const counter = this.state.counter+1;
+        this.setState({board: board, pieces: pieces, attackedPieces: attacked, counter: counter});
     }
 
     selectPieceAndDir = () => {
@@ -116,12 +118,7 @@ class BoardContainer extends Component {
     }
 
     restartHandler = () => {
-        const initState = this.getInitialState();
-        this.setState({
-            board : [...initState.board],
-            pieces: {...initState.pieces},
-            attackedPieces: {...initState.attackedPieces},
-        });
+        this.setState({...this.getInitialState()});
     }
 
     render() {
@@ -129,6 +126,7 @@ class BoardContainer extends Component {
             <div className={styles.BoardContainer}>
                 <button onClick={this.generateMove}>Move</button>
                 <button onClick={this.restartHandler}>Restart</button>
+                {this.state.counter}
                 <Board board={this.state.board} pieces={this.state.pieces}/>
                 <div>
                     Queen attacks: {this.state.attackedPieces['Q']} <br />
