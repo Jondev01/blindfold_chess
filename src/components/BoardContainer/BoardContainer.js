@@ -26,7 +26,7 @@ class BoardContainer extends Component {
         while(qPos === bPos || qPos === rPos)
             qPos = Math.floor(64*Math.random());
         let nPos = Math.floor(64*Math.random());
-        while(nPos === bPos || nPos === rPos || bPos === qPos)
+        while(nPos === bPos || nPos === rPos || nPos === qPos)
             nPos = Math.floor(64*Math.random());
         //create board
         //other logic uses that an empty square is 0!
