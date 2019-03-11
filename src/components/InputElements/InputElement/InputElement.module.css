@@ -1,4 +1,9 @@
 .InputElement {
+    border: 1px solid #ccc;
+    box-shadow: 3px 2px #eee;
+    display:inline-block;
+    margin-top: 5px;
+    padding: 10px;
 }
 
 .InputElement img {

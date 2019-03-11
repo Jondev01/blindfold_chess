@@ -8,7 +8,7 @@ class BoardContainer extends Component {
 
     constructor(props) {
         super(props);
-        const initState = this.getInitialPos();
+        const initState = this.getInitialState();
         this.state = {
             board : [...initState.board],
             pieces: {...initState.pieces},
@@ -16,7 +16,7 @@ class BoardContainer extends Component {
         }
     }
     
-    getInitialPos = () => {
+    getInitialState = () => {
         //initialize positions
         let rPos = Math.floor(64*Math.random());
         let bPos = Math.floor(64*Math.random());
@@ -115,10 +115,20 @@ class BoardContainer extends Component {
         return attacked;
     }
 
+    restartHandler = () => {
+        const initState = this.getInitialState();
+        this.setState({
+            board : [...initState.board],
+            pieces: {...initState.pieces},
+            attackedPieces: {...initState.attackedPieces},
+        });
+    }
+
     render() {
         return (
             <div className={styles.BoardContainer}>
                 <button onClick={this.generateMove}>Move</button>
+                <button onClick={this.restartHandler}>Restart</button>
                 <Board board={this.state.board} pieces={this.state.pieces}/>
                 <div>
                     Queen attacks: {this.state.attackedPieces['Q']} <br />

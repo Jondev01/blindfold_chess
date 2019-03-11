@@ -20,33 +20,40 @@ class InputElement extends Component {
         }
     };
 
-    render() {
-    const pieceImage = {
-        R: Rook,
-        N: Knight,
-        B: Bishop,
-        Q: Queen
-    };
-    let pieces = ['Q', 'R', 'B', 'N']
-        .filter( el => el !==this.props.piece)
-        .map( el => <img src={pieceImage[el]} key={el} alt='' />
-    );
-
-    const clickPieceHandler = (piece) => {
+    clickPieceHandler = (piece) => {
         this.setState( prevState => {
             return {
                 selected: {
                     ...prevState.selected,
                     [piece]: !prevState.selected[piece]
             }}});
-    };
+    }
 
-    return (
-        <div className={styles.InputElement}>
-            <img src={pieceImage[this.props.piece]} alt=''/> {pieces}
-            <SelectPiece piece={this.props.piece} pieceURL={pieceImage[this.props.piece]} selected={this.state.selected[this.props.piece]} onClick={clickPieceHandler}/>
-        </div>
-    );
+    render() {
+        const pieceImage = {
+            R: Rook,
+            N: Knight,
+            B: Bishop,
+            Q: Queen
+        };
+        const pieces = ['Q', 'R', 'B', 'N']
+            .filter( el => el !==this.props.piece)
+            .map( el => <SelectPiece
+                piece={el} 
+                pieceURL={pieceImage[el]}
+                selected={this.state.selected[el]}
+                onClick={this.clickPieceHandler}
+                key={el} alt='' />
+            );
+
+        return (
+            <div>
+                <div className={styles.InputElement}>
+                    <img src={pieceImage[this.props.piece]} alt=''/> {pieces}
+                    <SelectPiece piece={this.props.piece} pieceURL={pieceImage[this.props.piece]} selected={this.state.selected[this.props.piece]} onClick={this.clickPieceHandler}/>
+                </div>
+            </div>
+        );
     }
 }
 
