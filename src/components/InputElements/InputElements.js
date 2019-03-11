@@ -13,6 +13,7 @@ const inputElements = (props) => {
     return (
         <div>
             {output}
+            <button>Check your answers!</button>
         </div>
     );
 };

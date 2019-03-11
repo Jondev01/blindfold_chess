@@ -43,7 +43,7 @@ class BoardContainer extends Component {
             B: board[bPos]
         };
         const attacked = this.getAttackedPieces({board: board, pieces: pieces});
-       return {board: board, pieces: pieces, attackedPieces: attacked, counter: 0};
+       return {board: board, pieces: pieces, attackedPieces: attacked, counter: 0, move: ''};
     };
 
     generateMove = () => {
@@ -69,7 +69,8 @@ class BoardContainer extends Component {
         board[piece.square] = piece;
         const attacked = this.getAttackedPieces({board: board, pieces: pieces});
         const counter = this.state.counter+1;
-        this.setState({board: board, pieces: pieces, attackedPieces: attacked, counter: counter});
+        const move = piece.name + Pieces.intToSquare(piece.square);
+        this.setState({board: board, pieces: pieces, attackedPieces: attacked, counter: counter, move: move});
     }
 
     selectPieceAndDir = () => {
@@ -127,6 +128,7 @@ class BoardContainer extends Component {
                 <button onClick={this.generateMove}>Move</button>
                 <button onClick={this.restartHandler}>Restart</button>
                 {this.state.counter}
+                {this.state.move}
                 <Board board={this.state.board} pieces={this.state.pieces}/>
                 <div>
                     Queen attacks: {this.state.attackedPieces['Q']} <br />

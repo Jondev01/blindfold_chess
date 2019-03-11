@@ -171,4 +171,8 @@ export class Knight {
             square = this.square
         return  !(square%8+dir[0] >=8 || square%8+dir[0] < 0 || square/8 + dir[1] < 0 || square/8 + dir[1] >=8);
     }
+};
+
+export const intToSquare = (square) => {
+    return 'abcdefgh'.split('')[square%8]+`${7-Math.floor(square/8)+1}`;
 }

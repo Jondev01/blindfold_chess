@@ -50,7 +50,6 @@ class InputElement extends Component {
             <div>
                 <div className={styles.InputElement}>
                     <img src={pieceImage[this.props.piece]} alt=''/> {pieces}
-                    <SelectPiece piece={this.props.piece} pieceURL={pieceImage[this.props.piece]} selected={this.state.selected[this.props.piece]} onClick={this.clickPieceHandler}/>
                 </div>
             </div>
         );
