@@ -10,9 +10,6 @@ class BoardContainer extends Component {
         super(props);
         const initState = this.getInitialState();
         this.state = {
-            /*board : [...initState.board],
-            pieces: {...initState.pieces},
-            attackedPieces: {...initState.attackedPieces},*/
             ...initState
         }
     }

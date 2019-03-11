@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import styles from './InputElement.module.css';
 import Rook from '../../../images/WR.png';
@@ -9,27 +9,8 @@ import SelectPiece from '../SelectPiece/SelectPiece';
 
 
 
-class InputElement extends Component {
+const inputElement = (props) => {
 
-    state = {
-        selected: {
-            R: false,
-            N: false,
-            B: false,
-            Q: false,
-        }
-    };
-
-    clickPieceHandler = (piece) => {
-        this.setState( prevState => {
-            return {
-                selected: {
-                    ...prevState.selected,
-                    [piece]: !prevState.selected[piece]
-            }}});
-    }
-
-    render() {
         const pieceImage = {
             R: Rook,
             N: Knight,
@@ -37,23 +18,22 @@ class InputElement extends Component {
             Q: Queen
         };
         const pieces = ['Q', 'R', 'B', 'N']
-            .filter( el => el !==this.props.piece)
+            .filter( el => el !== props.piece)
             .map( el => <SelectPiece
                 piece={el} 
                 pieceURL={pieceImage[el]}
-                selected={this.state.selected[el]}
-                onClick={this.clickPieceHandler}
+                selected={props.selected[el]}
+                onClick={ (selectedPiece) => props.onClick(props.piece, selectedPiece)}
                 key={el} alt='' />
             );
 
         return (
             <div>
                 <div className={styles.InputElement}>
-                    <img src={pieceImage[this.props.piece]} alt=''/> {pieces}
+                    <img src={pieceImage[props.piece]} alt=''/> {pieces}
                 </div>
             </div>
         );
     }
-}
 
-export default InputElement;
+export default inputElement;
