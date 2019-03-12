@@ -10,7 +10,7 @@ class BoardContainer extends Component {
         super(props);
         const initState = this.getInitialState();
         this.state = {
-            ...initState
+            ...initState,
         }
     }
     
@@ -40,7 +40,7 @@ class BoardContainer extends Component {
             B: board[bPos]
         };
         const attacked = this.getAttackedPieces({board: board, pieces: pieces});
-       return {board: board, pieces: pieces, attackedPieces: attacked, counter: 0, move: ''};
+       return {board: board, pieces: pieces, attackedPieces: attacked, counter: 0, move: '', showValidation: false, points: 0};
     };
 
     generateMove = () => {
@@ -67,7 +67,7 @@ class BoardContainer extends Component {
         const attacked = this.getAttackedPieces({board: board, pieces: pieces});
         const counter = this.state.counter+1;
         const move = piece.name + Pieces.intToSquare(piece.square);
-        this.setState({board: board, pieces: pieces, attackedPieces: attacked, counter: counter, move: move});
+        this.setState({board: board, pieces: pieces, attackedPieces: attacked, counter: counter, move: move, showValidation: false});
     }
 
     selectPieceAndDir = () => {
@@ -119,6 +119,17 @@ class BoardContainer extends Component {
         this.setState({...this.getInitialState()});
     }
 
+    updatePointsHandler = (correctPiecesSelected) => {
+        this.setState(prevState => {
+            const newPoints = correctPiecesSelected ? prevState.points+1 : 0;
+            return {
+                ...prevState,
+                points: newPoints,
+                showValidation: true,
+            }
+        });
+    }
+
     render() {
         return (
             <div className={styles.BoardContainer}>
@@ -126,6 +137,7 @@ class BoardContainer extends Component {
                 <button onClick={this.restartHandler}>Restart</button>
                 {this.state.counter}
                 {this.state.move}
+                {this.state.points}
                 <Board board={this.state.board} pieces={this.state.pieces}/>
                 <div>
                     Queen attacks: {this.state.attackedPieces['Q']} <br />
@@ -133,7 +145,7 @@ class BoardContainer extends Component {
                     Bishop attacks: {this.state.attackedPieces['B']} <br />
                     Knight attacks: {this.state.attackedPieces['N']}
                 </div>
-                <InputElements attackedPieces={this.state.attackedPieces}/>
+                <InputElements attackedPieces={this.state.attackedPieces} validate={this.state.showValidation} updatePointsHandler={this.updatePointsHandler}/>
             </div>
         );
     }

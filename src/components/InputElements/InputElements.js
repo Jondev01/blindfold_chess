@@ -31,7 +31,6 @@ class InputElements extends Component {
                 Q: false
             }
         },
-        validate: false
     };
 
     clickPieceHandler = (piece, selectedPiece) => {
@@ -63,8 +62,7 @@ class InputElements extends Component {
                 }
             }
         }
-        console.log(correct);
-        this.setState({validate: true});
+        this.props.updatePointsHandler(correct);
     }
 
     render() {
@@ -75,7 +73,7 @@ class InputElements extends Component {
                 attackedPieces={this.props.attackedPieces[key]}
                 selected={this.state.selected[key]}
                 onClick={this.clickPieceHandler}
-                validate={this.state.validate}
+                validate={this.props.validate}
                 key={key}/>));
 
         return (
