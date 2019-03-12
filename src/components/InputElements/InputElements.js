@@ -2,6 +2,32 @@ import React, {Component} from 'react';
 
 import InputElement from './InputElement/InputElement';
 
+const initState = {
+    R: {
+        R: false,
+        N: false,
+        B: false,
+        Q: false
+    },
+    N: {
+        R: false,
+        N: false,
+        B: false,
+        Q: false
+    },
+    B: {
+        R: false,
+        N: false,
+        B: false,
+        Q: false
+    },
+    Q: {
+        R: false,
+        N: false,
+        B: false,
+        Q: false
+    }};
+
 class InputElements extends Component {
 
     state = {
@@ -65,6 +91,11 @@ class InputElements extends Component {
         this.props.updatePointsHandler(correct);
     }
 
+    removeSelectHandler = () => {
+        this.setState({selected: {...initState}});
+        this.props.restartHandler();
+    }
+
     render() {
         const output = Object
             .keys(this.props.attackedPieces)
@@ -78,6 +109,7 @@ class InputElements extends Component {
 
         return (
             <div>
+                <button onClick={this.removeSelectHandler}>Restart</button>
                 {output}
                 <button onClick={this.validate}>Check your answers!</button>
             </div>

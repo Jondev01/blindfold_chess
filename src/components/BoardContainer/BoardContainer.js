@@ -134,7 +134,6 @@ class BoardContainer extends Component {
         return (
             <div className={styles.BoardContainer}>
                 <button onClick={this.generateMove}>Move</button>
-                <button onClick={this.restartHandler}>Restart</button>
                 {this.state.counter}
                 {this.state.move}
                 {this.state.points}
@@ -145,7 +144,8 @@ class BoardContainer extends Component {
                     Bishop attacks: {this.state.attackedPieces['B']} <br />
                     Knight attacks: {this.state.attackedPieces['N']}
                 </div>
-                <InputElements attackedPieces={this.state.attackedPieces} validate={this.state.showValidation} updatePointsHandler={this.updatePointsHandler}/>
+                <InputElements attackedPieces={this.state.attackedPieces} validate={this.state.showValidation} updatePointsHandler={this.updatePointsHandler}
+                    restartHandler={this.restartHandler}/>
             </div>
         );
     }
