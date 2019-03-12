@@ -30,7 +30,8 @@ class InputElements extends Component {
                 B: false,
                 Q: false
             }
-        }
+        },
+        validate: false
     };
 
     clickPieceHandler = (piece, selectedPiece) => {
@@ -41,12 +42,29 @@ class InputElements extends Component {
                 else acc[el] = prevState.selected[piece][el];
                     return acc;
             },{});
-            console.log(newConfig);
             return {
                 selected: {
                     ...prevState.selected,
                     [piece]: newConfig,
             }}});
+    }
+
+    validate = () => {
+        //can probably be optimized
+        let correct = true;
+        for(let key in this.state.selected){
+            const attacked = Object.keys(this.state.selected).reduce( (acc,el) => {
+                acc[el] = this.props.attackedPieces[key].includes(el);
+                return acc;
+            }, {});
+            for(let piece in this.state.selected[key]){
+                if(this.state.selected[key][piece] !== attacked[piece]){
+                    correct = false;
+                }
+            }
+        }
+        console.log(correct);
+        this.setState({validate: true});
     }
 
     render() {
@@ -57,12 +75,13 @@ class InputElements extends Component {
                 attackedPieces={this.props.attackedPieces[key]}
                 selected={this.state.selected[key]}
                 onClick={this.clickPieceHandler}
+                validate={this.state.validate}
                 key={key}/>));
 
         return (
             <div>
                 {output}
-                <button>Check your answers!</button>
+                <button onClick={this.validate}>Check your answers!</button>
             </div>
         );
     }
