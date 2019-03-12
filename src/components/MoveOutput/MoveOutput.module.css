@@ -1,0 +1,18 @@
+.MoveOutput {
+    box-shadow: 3px 2px #ccc;
+    border: 1px solid #eee;
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+}
+
+.MoveOutput div {
+    display: inline-block;
+    font-size: 1.6rem;
+}
+
+.MoveOutput img {
+    height: 20px;
+    width: auto;
+    margin: auto;
+}

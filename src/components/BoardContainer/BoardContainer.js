@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './BoardContainer.module.css';
 import Board from '../Board/Board';
 import InputElements from '../InputElements/InputElements';
+import MoveOutput from '../MoveOutput/MoveOutput';
 import * as Pieces from '../../util/Pieces';
 
 class BoardContainer extends Component {
@@ -133,8 +134,8 @@ class BoardContainer extends Component {
     render() {
         return (
             <div className={styles.BoardContainer}>
-                <button onClick={this.generateMove}>Move</button>
                 {this.state.counter}
+                <MoveOutput move={this.state.move} />
                 {this.state.move}
                 {this.state.points}
                 <Board board={this.state.board} pieces={this.state.pieces}/>
@@ -144,8 +145,12 @@ class BoardContainer extends Component {
                     Bishop attacks: {this.state.attackedPieces['B']} <br />
                     Knight attacks: {this.state.attackedPieces['N']}
                 </div>
-                <InputElements attackedPieces={this.state.attackedPieces} validate={this.state.showValidation} updatePointsHandler={this.updatePointsHandler}
-                    restartHandler={this.restartHandler}/>
+                <InputElements 
+                    attackedPieces={this.state.attackedPieces} 
+                    validate={this.state.showValidation} 
+                    updatePointsHandler={this.updatePointsHandler}
+                    restartHandler={this.restartHandler}
+                    generateMoveHandler={this.generateMove}/>
             </div>
         );
     }

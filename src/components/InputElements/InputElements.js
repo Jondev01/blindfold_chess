@@ -109,6 +109,7 @@ class InputElements extends Component {
 
         return (
             <div>
+                <button onClick={this.props.generateMoveHandler}>Move</button>
                 <button onClick={this.removeSelectHandler}>Restart</button>
                 {output}
                 <button onClick={this.validate}>Check your answers!</button>
