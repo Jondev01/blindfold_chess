@@ -23,6 +23,8 @@ const inputElement = (props) => {
                 piece={el} 
                 pieceURL={pieceImage[el]}
                 selected={props.selected[el]}
+                validate={props.validate}
+                correct={props.attackedPieces.includes(el) === props.selected[el]}
                 onClick={ (selectedPiece) => props.onClick(props.piece, selectedPiece)}
                 key={el} alt='' />
             );

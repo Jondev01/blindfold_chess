@@ -17,6 +17,14 @@
     cursor: pointer;
 }
 
+.Correct {
+    border: 1px solid green;
+}
+
+.Wrong {
+    border: 1px solid red;
+}
+
 .tick {
     pointer-events: none;
     display:inline-block;
