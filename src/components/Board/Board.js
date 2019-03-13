@@ -13,7 +13,7 @@ const board = (props) =>  {
     const output = props.show ? squares : null;
     return (
         <React.Fragment>
-            <Backdrop show={props.show} />
+            <Backdrop show={props.show} clicked={props.closeBackdrop}/>
             <div className={styles.Board+' '+styles.Modal}
                 style={{
                     transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',

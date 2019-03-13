@@ -143,10 +143,13 @@ class BoardContainer extends Component {
     }
 
     toggleBoardHandler = () => {
+        console.log('[BoardContainer] clicked');
         this.setState(prevState => {
             return {
                 ...prevState,
-                showBoard: !prevState.showBoard
+                showBoard: !prevState.showBoard,
+                checkAllowed: false,
+                moveAllowed: false
             }
         });
     }
@@ -156,7 +159,7 @@ class BoardContainer extends Component {
             <div className={styles.BoardContainer}>
                 <StartingPosition startPos={this.state.startPos} /> <br />
                 <MoveOutput move={this.state.move} moveNumber={this.state.counter}/>
-                <Board board={this.state.board} pieces={this.state.pieces} show={this.state.showBoard}/>
+                <Board board={this.state.board} pieces={this.state.pieces} show={this.state.showBoard} closeBackdrop={this.toggleBoardHandler}/>
                 <InputElements 
                     attackedPieces={this.state.attackedPieces} 
                     validate={this.state.showValidation} 
