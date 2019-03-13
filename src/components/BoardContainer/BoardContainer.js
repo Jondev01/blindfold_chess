@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './BoardContainer.module.css';
 import Board from '../Board/Board';
+import StartingPosition from '../StartingPosition/StartingPosition';
 import InputElements from '../InputElements/InputElements';
 import MoveOutput from '../MoveOutput/MoveOutput';
 import * as Pieces from '../../util/Pieces';
@@ -41,7 +42,13 @@ class BoardContainer extends Component {
             B: board[bPos]
         };
         const attacked = this.getAttackedPieces({board: board, pieces: pieces});
-       return {board: board, pieces: pieces, attackedPieces: attacked, counter: 0, move: '', showValidation: false, points: 0};
+        const startPos = {
+            R: rPos,
+            N: nPos,
+            Q: qPos,
+            B: bPos
+        };
+       return {board: board, pieces: pieces, attackedPieces: attacked, counter: 0, move: '', showValidation: false, points: 0, startPos: startPos};
     };
 
     generateMove = () => {
@@ -135,16 +142,11 @@ class BoardContainer extends Component {
         return (
             <div className={styles.BoardContainer}>
                 {this.state.counter}
+                <StartingPosition startPos={this.state.startPos} />
                 <MoveOutput move={this.state.move} />
                 {this.state.move}
                 {this.state.points}
                 <Board board={this.state.board} pieces={this.state.pieces}/>
-                <div>
-                    Queen attacks: {this.state.attackedPieces['Q']} <br />
-                    Rook attacks: {this.state.attackedPieces['R']} <br />
-                    Bishop attacks: {this.state.attackedPieces['B']} <br />
-                    Knight attacks: {this.state.attackedPieces['N']}
-                </div>
                 <InputElements 
                     attackedPieces={this.state.attackedPieces} 
                     validate={this.state.showValidation} 

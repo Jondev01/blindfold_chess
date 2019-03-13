@@ -1,0 +1,6 @@
+.StartingPosition {
+    display: inline-block;
+    max-width: 80%;
+    border: 1px solid #eee;
+    box-shadow: 3px 2px #ccc;
+}
