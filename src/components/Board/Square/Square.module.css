@@ -1,14 +1,12 @@
 .Square {
-    display: inline-block;
+    position: relative;
+    display:inline-block;
     margin: 0;
     padding: 0;
     overflow: hidden;
     color: white;
     width: 12.5%; 
     height: 12.5%;
-    font-size: 12px;
-    line-height: 220%;
-    /*vertical-align: middle;*/
 }
 
 .Dark {
@@ -22,7 +20,11 @@
 }
 
 .Square img {
+    position: absolute;
+    top:50%;
+    left: 50;
+    transform: translate(-50%,-50%);
+    display: inline-block;
     height: 80%;
     width: auto;
-    vertical-align: middle
 }

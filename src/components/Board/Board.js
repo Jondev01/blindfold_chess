@@ -2,6 +2,7 @@ import React from 'react';
 
 import Square from './Square/Square';
 import styles from './Board.module.css';
+import Backdrop from '../Backdrop/Backdrop';
 
 const board = (props) =>  {
    
@@ -11,9 +12,16 @@ const board = (props) =>  {
     });
     const output = props.show ? squares : null;
     return (
-        <div className={styles.Board}>
-            {output}
-        </div>
+        <React.Fragment>
+            <Backdrop show={props.show} />
+            <div className={styles.Board+' '+styles.Modal}
+                style={{
+                    transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
+                    opacity: props.show ? '1' : '0'
+                }}>
+                {output}
+            </div>
+        </React.Fragment>
     );
 }
 
