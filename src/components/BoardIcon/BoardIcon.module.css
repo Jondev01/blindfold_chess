@@ -4,8 +4,10 @@
 }
 
 .BoardIcon img {
-    height: 25px;
+    height: 30px;
     width: auto;
+    margin: 0 auto;
+    vertical-align: middle;
 }
 
 .BoardIcon img:hover{

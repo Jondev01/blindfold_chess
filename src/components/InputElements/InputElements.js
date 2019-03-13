@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import InputElement from './InputElement/InputElement';
 import Button from '../Button/Button';
+import BoardIcon from '../BoardIcon/BoardIcon';
 
 const initState = {
     R: {
@@ -112,6 +113,7 @@ class InputElements extends Component {
             <div>
                 <Button onClick={this.props.generateMoveHandler} disabled={!this.props.moveAllowed}>Move</Button>
                 <Button onClick={this.removeSelectHandler}>Restart</Button>
+                <BoardIcon onClick={this.props.toggleBoardHandler}/>
                 {output}
                 <Button onClick={this.validate} disabled={!this.props.checkAllowed}>Check your answers</Button>
             </div>

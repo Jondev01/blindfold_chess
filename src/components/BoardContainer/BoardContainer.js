@@ -4,7 +4,6 @@ import Board from '../Board/Board';
 import StartingPosition from '../StartingPosition/StartingPosition';
 import InputElements from '../InputElements/InputElements';
 import MoveOutput from '../MoveOutput/MoveOutput';
-import BoardIcon from '../BoardIcon/BoardIcon';
 import * as Pieces from '../../util/Pieces';
 
 class BoardContainer extends Component {
@@ -157,7 +156,6 @@ class BoardContainer extends Component {
             <div className={styles.BoardContainer}>
                 <StartingPosition startPos={this.state.startPos} /> <br />
                 <MoveOutput move={this.state.move} moveNumber={this.state.counter}/>
-                <BoardIcon onClick={this.toggleBoardHandler}/>
                 <Board board={this.state.board} pieces={this.state.pieces} show={this.state.showBoard}/>
                 <InputElements 
                     attackedPieces={this.state.attackedPieces} 
@@ -166,7 +164,8 @@ class BoardContainer extends Component {
                     restartHandler={this.restartHandler}
                     generateMoveHandler={this.generateMove}
                     moveAllowed = {this.state.moveAllowed}
-                    checkAllowed = {this.state.checkAllowed}/>
+                    checkAllowed = {this.state.checkAllowed}
+                    toggleBoardHandler={this.toggleBoardHandler}/>
             </div>
         );
     }
