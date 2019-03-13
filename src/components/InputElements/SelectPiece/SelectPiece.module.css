@@ -4,6 +4,7 @@
     height: 30px;
     width: 30px;
     margin: 5px;
+    border: 2px solid transparent;
     user-select: none; 
 }
 
@@ -18,11 +19,11 @@
 }
 
 .Correct {
-    border: 1px solid green;
+    border: 2px solid green;
 }
 
 .Wrong {
-    border: 1px solid red;
+    border: 2px solid red;
 }
 
 .tick {

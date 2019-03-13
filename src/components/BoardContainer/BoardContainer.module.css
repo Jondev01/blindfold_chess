@@ -1,3 +1,6 @@
 .BoardContainer {
-    
+    display: inline-block;
+    padding: 25px;
+    border: 1px solid #ccc;
+    box-shadow: 3px 2px #eeeeee;
 }

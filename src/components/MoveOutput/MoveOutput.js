@@ -15,6 +15,7 @@ const pieceImage = {
 
 const moveOutput = (props) => (
     <div className={styles.MoveOutput}>
+    <strong>{props.moveNumber?props.moveNumber+'. ' : null}</strong>
         <img src={pieceImage[props.move[0]]} />
         <div><strong>{props.move.substring(1)}</strong></div>
     </div>

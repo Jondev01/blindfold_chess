@@ -141,11 +141,8 @@ class BoardContainer extends Component {
     render() {
         return (
             <div className={styles.BoardContainer}>
-                {this.state.counter}
-                <StartingPosition startPos={this.state.startPos} />
-                <MoveOutput move={this.state.move} />
-                {this.state.move}
-                {this.state.points}
+                <StartingPosition startPos={this.state.startPos} /> <br />
+                <MoveOutput move={this.state.move} moveNumber={this.state.counter}/>
                 <Board board={this.state.board} pieces={this.state.pieces}/>
                 <InputElements 
                     attackedPieces={this.state.attackedPieces} 

@@ -2,13 +2,14 @@
     /*box-shadow: 3px 2px #ccc;
     border: 1px solid #eee;*/
     display: inline-block;
-    width: 80px;
+    padding: 0 10px;
     height: 40px;
+    font-size: 1.6rem;
+    margin: 0 auto;
 }
 
 .MoveOutput div {
     display: inline-block;
-    font-size: 1.6rem;
 }
 
 .MoveOutput img {
