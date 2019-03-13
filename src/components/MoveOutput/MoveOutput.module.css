@@ -6,6 +6,7 @@
     height: 40px;
     font-size: 1.6rem;
     margin: 0 auto;
+    user-select: none;
 }
 
 .MoveOutput div {

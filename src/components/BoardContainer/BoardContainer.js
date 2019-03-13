@@ -4,6 +4,7 @@ import Board from '../Board/Board';
 import StartingPosition from '../StartingPosition/StartingPosition';
 import InputElements from '../InputElements/InputElements';
 import MoveOutput from '../MoveOutput/MoveOutput';
+import BoardIcon from '../BoardIcon/BoardIcon';
 import * as Pieces from '../../util/Pieces';
 
 class BoardContainer extends Component {
@@ -48,7 +49,11 @@ class BoardContainer extends Component {
             Q: qPos,
             B: bPos
         };
-       return {board: board, pieces: pieces, attackedPieces: attacked, counter: 0, move: '', showValidation: false, points: 0, startPos: startPos};
+       return {
+            board: board, pieces: pieces, attackedPieces: attacked, counter: 0, move: '',
+            showValidation: false,  startPos: startPos, moveAllowed: false, checkAllowed: true,
+            showBoard: false
+        }
     };
 
     generateMove = () => {
@@ -75,7 +80,7 @@ class BoardContainer extends Component {
         const attacked = this.getAttackedPieces({board: board, pieces: pieces});
         const counter = this.state.counter+1;
         const move = piece.name + Pieces.intToSquare(piece.square);
-        this.setState({board: board, pieces: pieces, attackedPieces: attacked, counter: counter, move: move, showValidation: false});
+        this.setState({board: board, pieces: pieces, attackedPieces: attacked, counter: counter, move: move, showValidation: false, checkAllowed: true});
     }
 
     selectPieceAndDir = () => {
@@ -129,11 +134,20 @@ class BoardContainer extends Component {
 
     updatePointsHandler = (correctPiecesSelected) => {
         this.setState(prevState => {
-            const newPoints = correctPiecesSelected ? prevState.points+1 : 0;
             return {
                 ...prevState,
-                points: newPoints,
                 showValidation: true,
+                moveAllowed: correctPiecesSelected,
+                checkAllowed: false
+            }
+        });
+    }
+
+    toggleBoardHandler = () => {
+        this.setState(prevState => {
+            return {
+                ...prevState,
+                showBoard: !prevState.showBoard
             }
         });
     }
@@ -143,13 +157,16 @@ class BoardContainer extends Component {
             <div className={styles.BoardContainer}>
                 <StartingPosition startPos={this.state.startPos} /> <br />
                 <MoveOutput move={this.state.move} moveNumber={this.state.counter}/>
-                <Board board={this.state.board} pieces={this.state.pieces}/>
+                <BoardIcon onClick={this.toggleBoardHandler}/>
+                <Board board={this.state.board} pieces={this.state.pieces} show={this.state.showBoard}/>
                 <InputElements 
                     attackedPieces={this.state.attackedPieces} 
                     validate={this.state.showValidation} 
                     updatePointsHandler={this.updatePointsHandler}
                     restartHandler={this.restartHandler}
-                    generateMoveHandler={this.generateMove}/>
+                    generateMoveHandler={this.generateMove}
+                    moveAllowed = {this.state.moveAllowed}
+                    checkAllowed = {this.state.checkAllowed}/>
             </div>
         );
     }

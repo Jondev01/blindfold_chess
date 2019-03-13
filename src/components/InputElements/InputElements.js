@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import InputElement from './InputElement/InputElement';
+import Button from '../Button/Button';
 
 const initState = {
     R: {
@@ -109,10 +110,10 @@ class InputElements extends Component {
 
         return (
             <div>
-                <button onClick={this.props.generateMoveHandler}>Move</button>
-                <button onClick={this.removeSelectHandler}>Restart</button>
+                <Button onClick={this.props.generateMoveHandler} disabled={!this.props.moveAllowed}>Move</Button>
+                <Button onClick={this.removeSelectHandler}>Restart</Button>
                 {output}
-                <button onClick={this.validate}>Check your answers!</button>
+                <Button onClick={this.validate} disabled={!this.props.checkAllowed}>Check your answers</Button>
             </div>
         );
     }

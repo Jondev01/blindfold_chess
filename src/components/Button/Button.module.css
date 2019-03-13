@@ -1,0 +1,31 @@
+.Button {
+    background-color: rgb(49, 96, 156);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    user-select: none;
+}
+
+.Button:hover{
+    cursor: pointer;
+}
+
+.Button:active {
+    box-shadow: 
+        inset -4px 0px  #444,
+        inset 0px -4px  #444,
+        inset 4px 0px  #444,
+        inset 0px 4px  #444;
+        opacity: 0.9;
+}
+
+.Button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.Button:focus {outline:0;}
+

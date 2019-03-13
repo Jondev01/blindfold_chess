@@ -5,14 +5,14 @@ import styles from './Board.module.css';
 
 const board = (props) =>  {
    
-    let squares = props.board.map( (el, index) => {
+    const squares = props.board.map( (el, index) => {
         let color = (Math.floor(index/8) + index%8) %2 === 0 ? 'light' : 'dark';
         return <Square type={color} key={index}  piece={el.name}/>
     });
-
+    const output = props.show ? squares : null;
     return (
         <div className={styles.Board}>
-            {squares}
+            {output}
         </div>
     );
 }

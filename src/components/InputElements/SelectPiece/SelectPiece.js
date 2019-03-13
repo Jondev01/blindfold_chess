@@ -3,7 +3,6 @@ import styles from './SelectPiece.module.css';
 
 const selectPiece = (props) => {
     let classes = [styles.SelectPiece];
-   console.log(props.validate);
    if(props.validate){
         if(props.correct === true)
             classes.push(styles.Correct);
@@ -11,7 +10,6 @@ const selectPiece = (props) => {
             classes.push(styles.Wrong);
    }
     classes = classes.join(' ');
-    console.log(classes);
     return (
         <div className={classes}>
             {props.selected ? <div className={styles.tick}></div> : null }
