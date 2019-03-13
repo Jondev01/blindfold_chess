@@ -5,7 +5,7 @@ import MoveOutput from '../MoveOutput/MoveOutput';
 
 const startingPosition = (props) => {
     const output = Object.keys(props.startPos).map( el => 
-        <MoveOutput move={el+Pieces.intToSquare(props.startPos[el])} />
+        <MoveOutput move={el+Pieces.intToSquare(props.startPos[el])} key={el} />
     );
 
     return (

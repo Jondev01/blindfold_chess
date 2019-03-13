@@ -16,7 +16,7 @@ const board = (props) =>  {
             <Backdrop show={props.show} clicked={props.closeBackdrop}/>
             <div className={styles.Board+' '+styles.Modal}
                 style={{
-                    transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
+                    transform: props.show ? 'translate(-50%,-50%)' : 'translate(-50%,-150vh)',
                     opacity: props.show ? '1' : '0'
                 }}>
                 {output}

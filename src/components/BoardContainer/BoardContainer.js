@@ -143,8 +143,7 @@ class BoardContainer extends Component {
     }
 
     toggleBoardHandler = () => {
-        console.log('[BoardContainer] clicked');
-        this.setState(prevState => {
+            this.setState(prevState => {
             return {
                 ...prevState,
                 showBoard: !prevState.showBoard,
