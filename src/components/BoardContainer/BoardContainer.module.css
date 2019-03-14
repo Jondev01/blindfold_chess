@@ -1,6 +1,6 @@
 .BoardContainer {
     display: inline-block;
-    padding: 0;
+    padding: 25px 0;
     width: 100%;
     text-align: center;
     box-sizing: border-box;
