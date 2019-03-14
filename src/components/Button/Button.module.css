@@ -7,6 +7,7 @@
     padding: 10px 15px;
     text-transform: uppercase;
     user-select: none;
+    transition: opacity 0.3s ease-out;
 }
 
 .Button:hover{
@@ -19,7 +20,6 @@
         inset 0px -4px  #444,
         inset 4px 0px  #444,
         inset 0px 4px  #444;
-        opacity: 0.9;
 }
 
 .Button:disabled {
