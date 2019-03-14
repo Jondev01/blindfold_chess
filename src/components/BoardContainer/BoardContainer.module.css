@@ -1,9 +1,9 @@
 .BoardContainer {
     display: inline-block;
-    padding: 25px;
+    padding: 0;
     width: 100%;
-    margin: 0 auto;
     text-align: center;
+    box-sizing: border-box;
 }
 
 @media (min-width: 500px) {
@@ -11,6 +11,7 @@
 		border: 1px solid #ccc;
         box-shadow: 3px 2px #eeeeee;
         width: auto;
+        padding: 25px;
         margin: 0 auto;
     }
 }
