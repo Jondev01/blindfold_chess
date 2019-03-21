@@ -3,10 +3,13 @@ import styles from './Modal.module.css';
 
 const modal = (props) => {
     return (
-        props.show ? 
-            <div className={styles.Modal}>
+            <div className={styles.Modal}
+                style={{
+                    transform: props.show ? 'translate(-50%,-50%)' : 'translate(-50%,-150vh)',
+                    opacity: props.show ? '1' : '0'
+                }}>
                 {props.children}
-            </div> : null
+            </div>
     );
 };
 
