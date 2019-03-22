@@ -11,7 +11,7 @@ class BoardIcon extends Component {
     render() {
         return (
             <div className={styles.BoardIcon}>
-                <img src={Icon} onClick={this.props.onClick}/>
+                <img src={Icon} onClick={this.props.onClick} alt=""/>
             </div>
         );
     }
