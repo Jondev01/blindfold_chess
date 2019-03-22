@@ -5,6 +5,7 @@ import Button from '../Button/Button';
 import BoardIcon from '../BoardIcon/BoardIcon';
 import Modal from '../Modal/Modal';
 import Backdrop from '../Backdrop/Backdrop';
+import styles from './InputElements.module.css';
 
 const initState = {
     R: {
@@ -120,16 +121,19 @@ class InputElements extends Component {
                 key={key}/>));
 
         return (
-            <div>
+            <div className={styles.InputElements}>
                 <Button onClick={this.props.generateMoveHandler} disabled={!this.props.moveAllowed}>Move</Button>
                 <Button onClick={this.removeSelectHandler}>Restart</Button>
-                <Button onClick={this.showHelpHandler}>?</Button>
                 <BoardIcon onClick={this.props.toggleBoardHandler}/>
+                <Button id={styles.helpButton} onClick={this.showHelpHandler}>?</Button>
                 <Modal show={this.state.showHelp}>
-                    <p>You are given the starting position of different pieces. Your goal is to mentally decide which are attacked.
-                    In each row below, the left-most piece is the attacking piece. Select the pieces in the same row, which this piece is attacking, then click "check your answers".
-                    If your answers were correct, you may click "move" and a random legal move is generated. Repeat the process as often as you can.
-                    If you lose track you can click the board icon to see the current position. When you view the board, you will need to restart though.
+                    <p>
+                        You are given the starting position of different pieces. Your goal is to mentally decide which are attacked.
+                        In each row below, the left-most piece is the attacking piece. Select the pieces in the same row, which this piece is attacking, then click "check your answers".
+                        If your answers were correct, you may click "move" and a random legal move is generated. Repeat the process as often as you can.
+                    </p>
+                    <p>
+                        If you lose track you can click the board icon to see the current position. If you view the board, you will need to restart though.
                     </p>
                 </Modal>
                 <Backdrop show={this.state.showHelp} clicked={this.closeHelpHandler} />
